@@ -4354,7 +4354,7 @@ Footer One
 .footer-one__top {
   position: relative;
   display: block;
-  padding: 110px 0px 80px;
+  padding: 110px 0px 30px;
 }
 
 .footer-one__single {
@@ -4619,7 +4619,7 @@ Footer One
   align-items: center;
   justify-content: space-between;
   border-top: 1px solid #193131;
-  padding: 35px 0px 36px;
+  padding: 15px 0px 36px;
 }
 
 .footer-one__bottom-left {
