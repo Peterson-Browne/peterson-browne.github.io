@@ -1,6 +1,7 @@
 (function ($) {
     "use strict";
 
+
     // Testimonial One Carousel
     if ($(".main-slider-two__carousel").length) {
         $(".main-slider-two__carousel").owlCarousel({
@@ -398,8 +399,8 @@
                 var percent = el.data("percent");
                 $(el).css("width", percent).addClass("counted");
             }, {
-                accY: -50,
-            }
+            accY: -50,
+        }
         );
     }
 
@@ -412,8 +413,8 @@
                     $(this).css("width", progressWidth + "%");
                 });
             }, {
-                accY: 0,
-            }
+            accY: 0,
+        }
         );
     }
 
@@ -443,8 +444,8 @@
                     });
                 }
             }, {
-                accY: 0,
-            }
+            accY: 0,
+        }
         );
     }
 
@@ -518,10 +519,10 @@
                         elm.val(Math.ceil(this.value)).trigger("change");
                     },
                 });
-                $(this).append(function () {});
+                $(this).append(function () { });
             }, {
-                accY: 20,
-            }
+            accY: 20,
+        }
         );
     }
 
@@ -549,8 +550,8 @@
             var target = $(this).attr("data-target");
             // animate
             $("html, body").animate({
-                    scrollTop: $(target).offset().top,
-                },
+                scrollTop: $(target).offset().top,
+            },
                 1000
             );
 
@@ -815,8 +816,8 @@
         if ($(this).next().val() > 1) {
             if ($(this).next().val() > 1)
                 $(this)
-                .next()
-                .val(+$(this).next().val() - 1);
+                    .next()
+                    .val(+$(this).next().val() - 1);
         }
     });
 
@@ -998,8 +999,8 @@
                 $("html, body")
                     .stop()
                     .animate({
-                            scrollTop: $(target.attr("href")).offset().top - headerH + "px",
-                        },
+                        scrollTop: $(target.attr("href")).offset().top - headerH + "px",
+                    },
                         1200,
                         "easeInOutExpo"
                     );
@@ -1166,4 +1167,45 @@
             });
         });
     }
+
+
+    $(".submit-button").click(function () {
+        var form = $(".contact-page__form");
+        var data1 = form.serializeArray();
+        var jsonData = {};
+        $.each(data1, function (index, field) {
+            jsonData[field.name] = field.value;
+
+        });
+        console.log((jsonData));
+        $.ajax({
+            url: "https://c0minld1gl.execute-api.ap-southeast-2.amazonaws.com/production",
+            method: "post",
+            data: {
+                recipientEmail: "dreamworld7077@gmail.com",
+                subject: jsonData.subject,
+                contents: jsonData.message + " by " + jsonData.email,
+                fromEmail: "laurencelatin@mistralteam.com"
+            },
+        })
+            .done((res) => {
+                console.log(res);
+                Swal.fire({
+                    icon: 'info',
+                    title: 'Success!',
+                    html: res
+                });
+            })
+            .fail(function (xhr, status, errorThrown) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Failed!',
+                    html: "Could not send email"
+                });
+                console.log('Failed');
+                // console.log( xhr );
+            });
+    });
+
+
 })(jQuery);
