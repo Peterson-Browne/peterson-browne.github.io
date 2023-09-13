@@ -1182,7 +1182,7 @@
             url: "https://c0minld1gl.execute-api.ap-southeast-2.amazonaws.com/production",
             method: "post",
             data: {
-                recipientEmail: "Laurencelatin@gmail.com",
+                recipientEmail: "info@pbinternational.com.au",
                 subject: jsonData.subject,
                 contents: `Name:${jsonData.name} \n Message: ${jsonData.message} \n Email: ${jsonData.email} \n Phone: ${jsonData.phone}`,
                 fromEmail: "Laurencelatin@gmail.com"
