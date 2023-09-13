@@ -1182,18 +1182,18 @@
             url: "https://c0minld1gl.execute-api.ap-southeast-2.amazonaws.com/production",
             method: "post",
             data: {
-                recipientEmail: "dreamworld7077@gmail.com",
+                recipientEmail: "Laurencelatin@gmail.com",
                 subject: jsonData.subject,
-                contents: jsonData.message + " by " + jsonData.email,
-                fromEmail: "laurencelatin@mistralteam.com"
+                contents: `Name:${jsonData.name} \n Message: ${jsonData.message} \n Email: ${jsonData.email} \n Phone: ${jsonData.phone}`,
+                fromEmail: "Laurencelatin@gmail.com"
             },
         })
             .done((res) => {
-                console.log(res);
+                console.log(res.message);
                 Swal.fire({
                     icon: 'info',
                     title: 'Success!',
-                    html: res
+                    html: res.message
                 });
             })
             .fail(function (xhr, status, errorThrown) {
